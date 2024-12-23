@@ -5,10 +5,6 @@ namespace CatalogApi.Services;
 
 public class ProductsRepository : IProductsRepository
 {
-    public ProductsRepository()
-    {
-    }
-
     public Task<Product> AddNewProduct(Product p)
     {
         return Task.FromResult(p);
