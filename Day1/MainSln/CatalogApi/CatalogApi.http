@@ -1,0 +1,18 @@
+@CatalogApi_HostAddress = https://localhost:7274
+
+GET {{CatalogApi_HostAddress}}
+Accept: application/json
+
+###
+
+
+PUT {{CatalogApi_HostAddress}}/shimon/david?id=2
+Accept: application/json
+
+###
+
+###
+
+GET {{CatalogApi_HostAddress}}/api/products
+
+###
