@@ -1,6 +1,4 @@
-﻿using CatalogApi.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CatalogApi.DataContext;
 

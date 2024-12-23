@@ -1,6 +1,3 @@
-
-using CatalogApi.Models;
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<TimeoutOptions>(builder.Configuration.GetSection("TimeoutOptions"));
 builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
