@@ -1,0 +1,24 @@
+@CatalogApi_HostAddress = http://localhost:5114
+###
+GET {{CatalogApi_HostAddress}}/api/products
+
+###
+
+POST {{CatalogApi_HostAddress}}/api/products
+###
+
+
+GET {{CatalogApi_HostAddress}}/api/products
+###
+
+
+
+POST {{CatalogApi_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+    "name":"ABadi",
+    "description": "asdasdasd",
+    "price": 56.78
+}
+###
