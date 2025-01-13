@@ -12,14 +12,25 @@ public static class ProductsApi
             .WithTags("Products");
 
         productsGroup.MapPost("", AddNewProduct);
+        productsGroup.MapPost("Range", AddProducts);
         productsGroup.MapGet("", GetAllProducts);
         productsGroup.MapGet("{id}", GetProductById);
 
         return endpoints;
     }
 
+    private static async Task<IResult> AddProducts(IProductsRepository repository, Product[] products)
+    {
+        foreach (var  p in products)
+        {
+            var newProduct = await repository.AddNewProduct(p);
+        }
+        return Results.Ok();
+    }
+
     private static async Task<Ok<List<Product>>> GetAllProducts(IProductsRepository repository)
     {
+        await Task.Delay(5000);
         var products = await repository.GetAllProducts();
         return TypedResults.Ok(products);
     }
@@ -44,6 +55,7 @@ public static class ProductsApi
             var newProduct = await repository.AddNewProduct(p);
             return TypedResults.Created("" + newProduct.Id, newProduct);
         }
+
         var erros = res.Errors.GroupBy(x => x.PropertyName)
             .Select(x => new { FieldName = x.Key, Errors = x.ToList() })
             .ToDictionary(x => x.FieldName, x => x.Errors.Select(o => o.ErrorMessage).ToArray());
