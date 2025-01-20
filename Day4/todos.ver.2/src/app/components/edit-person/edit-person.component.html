@@ -1,0 +1,25 @@
+<div [formGroup]="personForm" class="my-form">
+    <div>
+        <div>Name</div>
+        <div>
+            <input type="text" formControlName="name">
+        </div>
+    </div>
+    <div>
+        <div>Email</div>
+        <div>
+            <input type="text" formControlName="email">
+        </div>
+    </div>
+    <div>
+        <h3>Work address</h3>
+        <app-edit-address formControlName="workAddress"></app-edit-address>
+    </div>
+    <div>
+        <h3>Home address</h3>
+        <app-edit-address formControlName="homeAddress"></app-edit-address>
+    </div>
+</div>
+
+<button [disabled]="personForm.invalid">Save</button>
+<pre>{{personForm.value | json}}</pre>

@@ -1,0 +1,81 @@
+<div class="main">
+    <div class="split">
+        <div>
+            <mat-form-field appearance="fill" class="search-field">
+                <mat-label>Search Products</mat-label>
+                <input matInput placeholder="Search by name or description" [formControl]="searchFormControl">
+            </mat-form-field>
+        </div>
+        <div>
+            @if(store.isBusy())
+            {
+                <mat-progress-spinner [diameter]="16" mode="indeterminate"></mat-progress-spinner>
+            }
+        </div>
+    </div>
+
+    <div>
+        <button mat-icon-button (click)="addNewProduct()"><mat-icon>add</mat-icon></button>
+    </div>
+    <mat-card class="product-card">
+        <mat-card-header>
+            <mat-card-title>Product List</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="split-body">
+                <!-- Table for displaying products -->
+                <div>
+                    <table mat-table [dataSource]="store.filteredProducts()" class="mat-elevation-z8">
+
+                        <!-- ID Column -->
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef> ID </th>
+                            <td mat-cell *matCellDef="let product"> {{ product.id }} </td>
+                        </ng-container>
+
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef> Name </th>
+                            <td mat-cell *matCellDef="let product"> {{ product.name }} </td>
+                        </ng-container>
+
+                        <!-- Price Column -->
+                        <ng-container matColumnDef="price">
+                            <th mat-header-cell *matHeaderCellDef> Price </th>
+                            <td mat-cell *matCellDef="let product"> ${{ product.price }} </td>
+                        </ng-container>
+
+                        <!-- Description Column -->
+                        <ng-container matColumnDef="description">
+                            <th mat-header-cell *matHeaderCellDef> Description </th>
+                            <td mat-cell *matCellDef="let product"> {{ product.description }} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
+                            <td mat-cell *matCellDef="let product"> <button mat-raised-button
+                                    (click)="store.setSelectedItem(product.id)">Select</button> </td>
+                        </ng-container>
+
+
+                        <!-- Table Header and Rows -->
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+                <div class="product">
+                    @if(store.selectedProduct(); as product)
+                    {
+                    <span>
+                        <app-product-details [product]="product"></app-product-details>
+                    </span>
+                    }
+                </div>
+
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+
+    <h1>{{store.keyword()}}</h1>
+</div>

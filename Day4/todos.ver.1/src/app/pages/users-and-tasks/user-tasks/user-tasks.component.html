@@ -1,0 +1,46 @@
+<mat-form-field appearance="fill">
+    <mat-label>Search todo</mat-label>
+    <input matInput placeholder="Search by todo text" [formControl]="searchControl">
+</mat-form-field>
+
+<mat-slide-toggle [formControl]="onlyCompletedControl" color="primary">
+    Display only completed
+</mat-slide-toggle>
+
+<table mat-table [dataSource]="store.filteredTodos()" class="mat-elevation-z8">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let todo"> {{ todo.id }} </td>
+    </ng-container>
+
+    <!-- Todo Column -->
+    <ng-container matColumnDef="todo">
+        <th mat-header-cell *matHeaderCellDef> Todo </th>
+        <td mat-cell *matCellDef="let todo"> {{ todo.todo }} </td>
+    </ng-container>
+
+    <!-- Completed Column -->
+    <ng-container matColumnDef="completed">
+        <th mat-header-cell *matHeaderCellDef> Completed </th>
+        <td mat-cell *matCellDef="let todo">
+            <mat-checkbox [checked]="todo.completed" disabled></mat-checkbox>
+        </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let todo">
+            @if(!todo.completed)
+            {
+            <button mat-button (click)="store.markAsCompleted(todo.id)">Mark as completed</button>
+            }
+        </td>
+    </ng-container>
+
+    <!-- Header and Row Definitions -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

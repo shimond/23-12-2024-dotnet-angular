@@ -1,0 +1,54 @@
+<mat-card class="add-product-card">
+    <mat-card-header>
+        <mat-card-title>Add New Product</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form (ngSubmit)="onSubmit()" [formGroup]="productForm">
+
+            <!-- Product Name -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Product Name</mat-label>
+                <input matInput formControlName="name" placeholder="Enter product name">
+
+            </mat-form-field>
+
+            <!-- Product Price -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Product Price</mat-label>
+                <input matInput formControlName="price" placeholder="Enter product price" type="number">
+                <!-- <mat-error *ngIf="productForm.controls['price'].hasError('required')">
+                    Price is required
+                </mat-error>
+                <mat-error *ngIf="productForm.controls['price'].hasError('min')">
+                    Price must be greater than 0
+                </mat-error> -->
+            </mat-form-field>
+
+            <!-- Product Description -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Product Description</mat-label>
+                <textarea matInput formControlName="description" placeholder="Enter product description"></textarea>
+                @if(productForm.controls['description'].hasError('required'))
+                {
+                <mat-error>
+                    Description is required
+                </mat-error>
+                }
+            </mat-form-field>
+
+            <!-- Submit Button -->
+            <div class="submit-btn">
+                <button mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid">
+                    Add Product
+                </button>
+            </div>
+        </form>
+        @if(store.addNewProductsError()?.error?.errors; as errors)
+        {
+        <div class="red-alert">
+            {{ errors| json}}
+        </div>
+        }
+    </mat-card-content>
+</mat-card>
