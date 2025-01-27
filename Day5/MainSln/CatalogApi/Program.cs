@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 app.MapDefaultEndpoints();
 var db = app.Services.CreateScope().ServiceProvider.GetRequiredService<CatalogDataContext>();
-await db.Database.EnsureCreatedAsync();
+//await db.Database.EnsureCreatedAsync();
 
 app.UseCors();
 app.UseSwagger();
