@@ -1,0 +1,229 @@
+@CatalogApi_HostAddress = http://localhost:8752
+###
+GET {{CatalogApi_HostAddress}}/api/products
+
+###
+
+POST {{CatalogApi_HostAddress}}/api/products
+###
+
+
+GET {{CatalogApi_HostAddress}}/api/products
+###
+POST {{CatalogApi_HostAddress}}/api/products/range
+Content-Type: application/json
+
+[
+  {
+   
+    "name": "Laptop",
+    "description": "High-performance laptop for gaming and work",
+    "price": 1200
+  },
+  {
+    "name": "Smartphone",
+    "description": "Latest model with excellent camera",
+    "price": 799
+  },
+  {
+    "name": "Wireless Headphones",
+    "description": "Noise-cancelling over-ear headphones",
+    "price": 150
+  },
+  {
+    "name": "Smartwatch",
+    "description": "Track your fitness and stay connected",
+    "price": 250
+  },
+  {
+    "name": "4K TV",
+    "description": "Ultra HD smart TV with HDR support",
+    "price": 900
+  },
+  {
+    "name": "Bluetooth Speaker",
+    "description": "Portable speaker with excellent sound quality",
+    "price": 120
+  },
+  {
+    "name": "Tablet",
+    "description": "Sleek tablet with large display for entertainment",
+    "price": 400
+  },
+  {
+    "name": "Digital Camera",
+    "description": "Capture stunning photos with this DSLR camera",
+    "price": 650
+  },
+  {
+    "name": "E-Reader",
+    "description": "Lightweight e-reader with a glare-free screen",
+    "price": 130
+  },
+  {
+    "name": "Gaming Console",
+    "description": "Next-gen console for immersive gaming experiences",
+    "price": 500
+  },
+  {
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with adjustable DPI",
+    "price": 25
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "description": "Responsive mechanical keyboard for gaming",
+    "price": 90
+  },
+  {
+    "name": "Smart Home Hub",
+    "description": "Central hub to control your smart devices",
+    "price": 80
+  },
+  {
+    "name": "Action Camera",
+    "description": "Compact camera for capturing your adventures",
+    "price": 200
+  },
+  {
+    "name": "Robot Vacuum",
+    "description": "Autonomous robot vacuum for cleaning your home",
+    "price": 250
+  },
+  {
+    "name": "Electric Scooter",
+    "description": "Eco-friendly electric scooter for commuting",
+    "price": 350
+  },
+  {
+    "name": "Smart Thermostat",
+    "description": "Intelligent thermostat to optimize your home's temperature",
+    "price": 120
+  },
+  {
+    "name": "Portable Charger",
+    "description": "Compact power bank for charging your devices on the go",
+    "price": 30
+  },
+  {
+    "name": "Gaming Mouse",
+    "description": "High-precision gaming mouse with customizable buttons",
+    "price": 50
+  },
+  {
+    "name": "VR Headset",
+    "description": "Virtual reality headset for immersive experiences",
+    "price": 350
+  },
+  {
+    "name": "Laptop Stand",
+    "description": "Adjustable laptop stand for ergonomic setup",
+    "price": 40
+  },
+  {
+    "name": "External SSD",
+    "description": "Fast and reliable external storage drive",
+    "price": 100
+  },
+  {
+    "name": "Electric Toothbrush",
+    "description": "Smart electric toothbrush with app connectivity",
+    "price": 90
+  },
+  {
+    "name": "Cordless Drill",
+    "description": "Powerful cordless drill for home projects",
+    "price": 150
+  },
+  {
+    "name": "Blender",
+    "description": "High-speed blender for smoothies and soups",
+    "price": 85
+  },
+  {
+    "name": "Coffee Maker",
+    "description": "Programmable coffee maker with brewing options",
+    "price": 120
+  },
+  {
+    "name": "Electric Kettle",
+    "description": "Boil water quickly with this electric kettle",
+    "price": 30
+  },
+  {
+    "name": "Microwave Oven",
+    "description": "Compact microwave oven for quick meal prep",
+    "price": 150
+  },
+  {
+    "name": "Air Fryer",
+    "description": "Healthy air fryer for crisp, fried food with less oil",
+    "price": 120
+  },
+  {
+    "name": "Induction Cooktop",
+    "description": "Portable induction cooktop for faster cooking",
+    "price": 80
+  },
+  {
+    "name": "Cordless Vacuum",
+    "description": "Lightweight cordless vacuum for quick cleanups",
+    "price": 180
+  },
+  {
+    "name": "Space Heater",
+    "description": "Compact space heater for efficient room heating",
+    "price": 60
+  },
+  {
+    "name": "Air Purifier",
+    "description": "Air purifier with HEPA filter for cleaner air",
+    "price": 100
+  },
+  {
+    "name": "Electric Fan",
+    "description": "Energy-efficient fan for cool comfort",
+    "price": 40
+  },
+  {
+    "name": "Luggage Set",
+    "description": "Durable luggage set for travel convenience",
+    "price": 150
+  },
+  {
+    "name": "Solar Charger",
+    "description": "Portable solar charger for sustainable power",
+    "price": 70
+  },
+  {
+    "name": "Bike Lock",
+    "description": "Heavy-duty bike lock for security",
+    "price": 25
+  },
+  {
+    "name": "Camping Tent",
+    "description": "Four-person camping tent with waterproof features",
+    "price": 120
+  },
+  {
+    "name": "Backpack",
+    "description": "Spacious backpack for daily use or travel",
+    "price": 40
+  },
+  {
+    "name": "Yoga Mat",
+    "description": "Non-slip yoga mat for comfortable practice",
+    "price": 20
+  }
+]
+
+###
+POST {{CatalogApi_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+    "name":"ABadi",
+    "description": "asdasdasd",
+    "price": 56.78
+}
+###
