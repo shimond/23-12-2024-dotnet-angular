@@ -34,7 +34,7 @@ import { MatSort } from '@angular/material/sort';
     templateUrl: './product-search.component.html',
     styleUrl: './product-search.component.scss'
 })
-export class ProductSearchComponent {
+export default class ProductSearchComponent {
     displayedColumns: string[] = ['id', 'name', 'price', 'description', 'action'];
     store = inject(ProductSearchStore);
     searchFormControl = new FormControl<string>('')

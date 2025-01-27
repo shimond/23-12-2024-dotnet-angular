@@ -10,7 +10,7 @@ import { delay, tap } from 'rxjs';
     styleUrl: './coutner.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CoutnerComponent {
+export default class CoutnerComponent {
 
     y = signal(0);
     coutnerService = inject(CoutnerService);
