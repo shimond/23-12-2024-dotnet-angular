@@ -1,0 +1,45 @@
+/* app.component.css */
+.product-card {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+th.mat-header-cell {
+    background-color: #f1f1f1;
+}
+
+mat-card-title {
+    color: white;
+}
+
+.mat-cell {
+    padding: 16px;
+    text-align: center;
+}
+
+mat-form-field {
+    width: 400px;
+}
+
+.split {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.split-body {
+    display: flex;
+    gap: 12px;
+}
+
+.product {
+    color: aqua;
+}
+
+.main{
+    padding: 24px;
+}

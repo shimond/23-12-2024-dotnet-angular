@@ -1,0 +1,46 @@
+services:
+  bff:
+    image: ${DOCKER_REGISTRY-}bff
+    container_name: bff
+    build:
+      context: .
+      dockerfile: BFF/Dockerfile
+    networks:
+        - my_full_app_network
+
+  catalogapi:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    container_name: catalog_api
+    build:
+      context: .
+      dockerfile: CatalogApi/Dockerfile
+    networks:
+        - my_full_app_network
+
+  sqlserver:
+     image: mcr.microsoft.com/mssql/server:2019-latest
+     container_name: sqlserver
+     ports:
+       - "9933:1433"       
+     environment:
+       SA_PASSWORD: "YourStrong!Password"  # Set a strong password for the SA user
+       ACCEPT_EULA: "Y"  
+     volumes:
+        - my-sqldata:/var/opt/mssql
+     networks:
+         - my_full_app_network
+
+  redis:
+    image: redis:latest
+    container_name: redis_db
+    ports:
+      - "6379:6379"
+    networks:
+      - my_full_app_network
+
+networks:
+  my_full_app_network:
+
+volumes:
+  my-sqldata:
+
