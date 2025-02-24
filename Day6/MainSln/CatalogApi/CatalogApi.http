@@ -1,4 +1,42 @@
-@CatalogApi_HostAddress = http://localhost:8752
+@CatalogApi_HostAddress = https://localhost:7274
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImRhdmlkIiwic3ViIjoiZGF2aWQiLCJyb2xlIjoiQWRtaW4iLCJhdWQiOlsiaHR0cDovL2xvY2FsaG9zdDoyMTMxNyIsImh0dHBzOi8vbG9jYWxob3N0OjQ0MzM0IiwiaHR0cDovL2xvY2FsaG9zdDo1MTE0IiwiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI3NCJdLCJuYmYiOjE3NDA0MDAyNDMsImV4cCI6MTc0MDQ4NjY0MywiaWF0IjoxNzQwNDAwMjQzLCJpc3MiOiJkb3RuZXQtdXNlci1qd3RzIn0.Zy-n8wPZrYwFPPyEWm80LqngqwwvyVGGg1LYbp0m-_s
+@adminToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImRhdmlkIiwic3ViIjoiZGF2aWQiLCJyb2xlIjoiQWRtaW4iLCJhdWQiOlsiaHR0cDovL2xvY2FsaG9zdDoyMTMxNyIsImh0dHBzOi8vbG9jYWxob3N0OjQ0MzM0IiwiaHR0cDovL2xvY2FsaG9zdDo1MTE0IiwiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI3NCJdLCJuYmYiOjE3NDA0MDAyNDMsImV4cCI6MTc0MDQ4NjY0MywiaWF0IjoxNzQwNDAwMjQzLCJpc3MiOiJkb3RuZXQtdXNlci1qd3RzIn0.Zy-n8wPZrYwFPPyEWm80LqngqwwvyVGGg1LYbp0m-_s
+ 
+
+###
+POST {{CatalogApi_HostAddress}}/api/products
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+    "name":"Aba2222ni",
+    "description": "asdasdasd",
+    "price": 56.78
+}
+###
+
+POST {{CatalogApi_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+    "userName":"david",
+    "password": "1234"
+}
+
+
+
+###
+GET {{CatalogApi_HostAddress}}/withreq1
+
+###
+
+
+###
+GET {{CatalogApi_HostAddress}}/withreq2
+
+###
+
+
 ###
 GET {{CatalogApi_HostAddress}}/api/products
 
@@ -12,6 +50,7 @@ GET {{CatalogApi_HostAddress}}/api/products
 ###
 POST {{CatalogApi_HostAddress}}/api/products/range
 Content-Type: application/json
+Authorization: Bearer {{adminToken}}
 
 [
   {
@@ -216,14 +255,3 @@ Content-Type: application/json
     "price": 20
   }
 ]
-
-###
-POST {{CatalogApi_HostAddress}}/api/products
-Content-Type: application/json
-
-{
-    "name":"ABadi",
-    "description": "asdasdasd",
-    "price": 56.78
-}
-###

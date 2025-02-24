@@ -10,43 +10,21 @@ public static class ProductsApi
 {
     public static IEndpointRouteBuilder MapProduts(this IEndpointRouteBuilder endpoints)
     {
-        //var productsGroup = endpoints.MapGroup("api/products")
-        //    .WithTags("Products")
-        //    .AddEndpointFilter(async (context, next) =>
-        //    {
-        //        var typesToCheckValidation = context.Arguments;
-        //        foreach (var arg in typesToCheckValidation)
-        //        {
-        //            var type = arg.GetType();
-        //            var openType = typeof(IValidator<>);
-        //            var ivalidator = openType.MakeGenericType(type);
-        //            var validator = context.HttpContext.RequestServices.GetService(ivalidator);
-        //            if (validator != null)
-        //            {
-        //                var valRes =  validator.GetType().GetMethod("Validate", [type]).Invoke(validator, [arg]) as ValidationResult;
-        //                if(!valRes.IsValid)
-        //                {
-        //                    return TypedResults.BadRequest(valRes.Errors);
-        //                }
-        //            }
-        //        }
-        //        var res = await next(context);
-        //        return res;
-        //    });
-
         var productsGroup = endpoints.MapGroup("api/products")
             .WithTags("Products")
             .AddEndpointFilter<ValidationEndPointFilter>();
 
         productsGroup.MapPost("", AddNewProduct).RequireAuthorization();
-        productsGroup.MapPost("Range", AddProducts);
+        productsGroup.MapPost("Range", AddProducts).RequireAuthorization("Admin");
+
+
         productsGroup.MapGet("", GetAllProducts);
         productsGroup.MapGet("{id}", GetProductById);
 
         return endpoints;
     }
 
-    private static async Task<IResult> AddProducts(IHttpContextAccessor httpContextAccessor,  IProductsRepository repository, Product[] products)
+    private static async Task<IResult> AddProducts(IProductsRepository repository, Product[] products)
     {
         foreach (var p in products)
         {
@@ -69,7 +47,8 @@ public static class ProductsApi
 
     private static async Task<Results<Created<Product>, ValidationProblem>> AddNewProduct(Product p,
         IProductsRepository repository,
-        IValidator<Product> validator)
+        IValidator<Product> validator,
+        IHttpContextAccessor accessor)
     {
         var res = await validator.ValidateAsync(p);
         if (res.IsValid)

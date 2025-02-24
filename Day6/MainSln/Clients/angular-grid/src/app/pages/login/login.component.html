@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-content>
+        @if(!store.isAuth())
+        {
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div>
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>User Name</mat-label>
+                    <input matInput formControlName="userName" placeholder="Enter userName">
+
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>User Name</mat-label>
+                    <input matInput formControlName="password" placeholder="Enter password" type="password">
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button>Login</button>
+            </div>
+        </form>
+        }@else
+        {
+            <h2>Hello {{store.userName()}}</h2>
+        }
+    </mat-card-content>
+</mat-card>
